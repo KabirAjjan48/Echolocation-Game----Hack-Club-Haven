@@ -1,0 +1,16 @@
+NECROMANCER DUNGEON - LICENSE
+by Kaktora Games
+
+YOU CAN:
+- Use these assets in personal and commercial projects.
+- Modify the assets to fit your project.
+
+YOU CANNOT:
+- Redistribute, resell or repackage the assets, modified or not,
+  as standalone assets or as part of another asset pack.
+- Use the assets to train AI models or include them in AI datasets.
+
+Credit is not required, but it is always appreciated:
+"Necromancer Dungeon by Kaktora Games"
+
+All assets are hand-drawn. No AI was used in their creation.

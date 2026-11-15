@@ -1,0 +1,110 @@
+﻿[gd_scene format=3 uid="uid://b4h51oybfuvjq"]
+
+[ext_resource type="PackedScene" path="res://scenes/levels/base_level.tscn" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://cmfeksajotmt1" path="res://scripts/echolocation.gd" id="2_echolocation"]
+[ext_resource type="Shader" uid="uid://byg1ga7p240cu" path="res://scripts/echolocation_overlay.gdshader" id="3_overlay"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_overlay"]
+shader = ExtResource("3_overlay")
+shader_parameter/pulse_center = Vector2(0.5, 0.5)
+shader_parameter/player_center = Vector2(0.5, 0.5)
+shader_parameter/viewport_size = Vector2(1280, 720)
+shader_parameter/pulse_age = -1.0
+shader_parameter/pulse_speed = 850.0
+shader_parameter/reveal_duration = 1.4
+shader_parameter/max_radius = 360.0
+shader_parameter/player_safe_radius = 70.0
+
+[node name="Main" type="Node2D" unique_id=186436760]
+script = ExtResource("2_echolocation")
+
+[node name="LevelRoot" parent="." unique_id=660879162 instance=ExtResource("1_0wfyh")]
+
+[node name="EcholocationOverlay" type="CanvasLayer" parent="." unique_id=1768371740]
+layer = 10
+
+[node name="Darkness" type="ColorRect" parent="EcholocationOverlay" unique_id=919099437]
+visible = false
+material = SubResource("ShaderMaterial_overlay")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RedFlash" type="ColorRect" parent="EcholocationOverlay"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.12, 0.12, 0.68)
+
+[node name="EchoStatus" type="Label" parent="EcholocationOverlay"]
+visible = false
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 280.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.75, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "ECHO READY  (E)"
+
+[node name="WinScreen" type="Control" parent="EcholocationOverlay"]
+visible = false
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Backdrop" type="ColorRect" parent="EcholocationOverlay/WinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.015, 0.01, 0.025, 0.94)
+
+[node name="CenterContainer" type="CenterContainer" parent="EcholocationOverlay/WinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EcholocationOverlay/WinScreen/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 22
+alignment = 1
+
+[node name="WinTitle" type="Label" parent="EcholocationOverlay/WinScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "YOU WIN!"
+horizontal_alignment = 1
+
+[node name="WinMessage" type="Label" parent="EcholocationOverlay/WinScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "You found the treasure."
+horizontal_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="EcholocationOverlay/WinScreen/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Play Again"
+
