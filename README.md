@@ -9,4 +9,4 @@ https://kabirajjan.itch.io/echolocation-game-hack-club-haven
 
 Credits to: 
 Kabir Ajjan - Making the game
-Quinn Becker - Coming up with the idea behind the echo mechanixc
+Quinn Becker - Coming up with the idea behind the echo mechanic
